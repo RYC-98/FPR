@@ -1,0 +1,1 @@
+Locally import the ViTs weight file: place the .bin weight file (such as 'vit_base_patch16_224.bin', etc) from the timm library on Hugging Face here.
