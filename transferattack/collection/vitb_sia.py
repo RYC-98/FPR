@@ -160,13 +160,12 @@ class VITB_SIA(MIFGSM):
                 self.model.blocks[i].attn.attn_drop.register_forward_hook(partial(diverse_attn_map, attn_map_change_range=25))  # default: 25
 
 
-            if self.mom_attn_emb:
-                for i in range(12):
-                    self.model.blocks[i].attn.register_forward_hook(partial(cross_iter_emb_momentum, scale=0.8, mom_emb_decay=0.3)) # default: scale=0.8, mom_emb_decay=0.3
 
-            if self.mom_mlp_emb:
-                for i in range(12):
-                    self.model.blocks[i].mlp.register_forward_hook(partial(cross_iter_emb_momentum, scale=0.8, mom_emb_decay=0.3))
+            for i in range(12):
+                self.model.blocks[i].attn.register_forward_hook(partial(cross_iter_emb_momentum, scale=0.8, mom_emb_decay=0.3)) # default: scale=0.8, mom_emb_decay=0.3
+
+            for i in range(12):
+                self.model.blocks[i].mlp.register_forward_hook(partial(cross_iter_emb_momentum, scale=0.8, mom_emb_decay=0.3))
 
 
 
