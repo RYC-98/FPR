@@ -23,6 +23,9 @@ from .input_transformation.sia import SIA
 from .input_transformation.bsr import BSR
 
 
+from .model_related.gns import GNS
+from .model_related.pna_patchout import PNA_PatchOut
+from .model_related.tgr import TGR
 
 attack_zoo = {
 
@@ -45,7 +48,12 @@ attack_zoo = {
 
             # input transformation
             'sia': SIA,
-            'bsr': BSR
+            'bsr': BSR,
+
+
+            'gns': GNS,
+            'pna_patchout': PNA_PatchOut,
+            'tgr': TGR
         }
 
 __version__ = '1.0.0'
