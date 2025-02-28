@@ -127,10 +127,11 @@ class CAITS(MIFGSM):
         if self.model_name in ['cait_s24_224']: 
 
             cr = 30
+            ## 0-23
             for block_ind in [2,14]:  
                 self.model.blocks[block_ind].attn.attn_drop.register_forward_hook(partial(diverse_attn_map, attn_map_change_range=cr))
             
-            for block_ind in [25]: 
+            for block_ind in [1]: 
                 self.model.blocks_token_only[block_ind].attn.attn_drop.register_forward_hook(partial(diverse_attn_map, attn_map_change_range=cr))
 
             s = 0.6
